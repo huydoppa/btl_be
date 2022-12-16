@@ -17,10 +17,10 @@ public class UserSevice {
     }
 
     public Boolean checkExistUsername(String username){
-        return userRepository.checkExistUserName(username) != null;
+        return userRepository.existsByUsername(username);
     }
 
     public ArrayList<User> getAllUser(){
-        return userRepository.getAllUser();
+        return (ArrayList<User>) userRepository.findAll();
     }
 }

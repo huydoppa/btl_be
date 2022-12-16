@@ -28,41 +28,46 @@ public class BookController {
 
 
     @RequestMapping(path = "/create", method = POST, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
-    public ApiResponse createBook(@RequestPart MultipartFile file, @RequestParam String title, @RequestParam String author ,
-                                  @RequestParam String date, @RequestParam String category, @RequestParam String numberofPage,
-                                  @RequestParam String description
+    public ApiResponse createBook(@ModelAttribute BookDTO bookdto
     ){
+        if(bookService.checkExistBook(bookdto.getTitle())||bookdto.getTitle().equals("")||bookdto.getAuthor().equals("")){
+            return new ApiResponse(1);
+        }
         String linkImg = "";
+        MultipartFile file = bookdto.getFile();
+        System.out.println(file);
         if(file!=null){
         linkImg = fileStorageService.storeFile(file);
         }
         BookDTO bookDTO = new BookDTO();
-        bookDTO.setTitle(title);
-        bookDTO.setAuthor(author);
-        bookDTO.setDate(date);
-        bookDTO.setDescription(description);
-        bookDTO.setNumberofPage(Long.parseLong(numberofPage));
+        bookDTO.setTitle(bookdto.getTitle());
+        bookDTO.setAuthor(bookdto.getAuthor());
+        bookDTO.setDate(bookdto.getDate());
+        bookDTO.setDescription(bookdto.getDescription());
+        bookDTO.setNumberofPage(bookdto.getNumberofPage());
         bookDTO.setLinkImg(linkImg);
-        bookDTO.setCategory(category);
+        bookDTO.setCategory(bookdto.getCategory());
         return bookService.create(bookDTO);
     }
     @PostMapping("/update/{id}")
-    public ApiResponse updatebook(@PathVariable String id ,@RequestPart(required = false) MultipartFile file, @RequestParam String title, @RequestParam String author ,
-                                  @RequestParam String date, @RequestParam String category, @RequestParam String numberofPage,
-                                  @RequestParam String description) {
+    public ApiResponse updatebook(@PathVariable String id ,BookDTO bookdto ) {
+        if(bookService.checkExistBook(bookdto.getTitle())||bookdto.getTitle().equals("")||bookdto.getAuthor().equals("")){
+            return new ApiResponse(1);
+        }
         String linkImg = "";
+        MultipartFile file = bookdto.getFile();
         if(file!=null){
-        linkImg = fileStorageService.storeFile(file);}
-        System.out.println("=========================="+linkImg);
+            linkImg = fileStorageService.storeFile(file);
+        }
         BookDTO bookDTO = new BookDTO();
         bookDTO.setId(Long.parseLong(id));
-        bookDTO.setTitle(title);
-        bookDTO.setAuthor(author);
-        bookDTO.setDate(date);
-        bookDTO.setDescription(description);
-        bookDTO.setNumberofPage(Long.parseLong(numberofPage));
+        bookDTO.setTitle(bookdto.getTitle());
+        bookDTO.setAuthor(bookdto.getAuthor());
+        bookDTO.setDate(bookdto.getDate());
+        bookDTO.setDescription(bookdto.getDescription());
+        bookDTO.setNumberofPage(bookdto.getNumberofPage());
         bookDTO.setLinkImg(linkImg);
-        bookDTO.setCategory(category);
+        bookDTO.setCategory(bookdto.getCategory());
         return bookService.update(bookDTO);
     }
 
@@ -78,10 +83,11 @@ public class BookController {
         return bookService.getBook(id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ApiResponse delete(@PathVariable String id) {
         return bookService.delete(id);
     }
+
 
 
 

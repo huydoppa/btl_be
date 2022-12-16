@@ -23,25 +23,37 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
+    @Column(nullable = false)
+    private String role;
     public User() {
     }
 
-    public User(Long Id, String phone, String email, String password, String username) {
+    public User(Long Id, String phone, String email, String password, String username,String role) {
         this.Id = Id;
         this.phone = phone;
         this.email = email;
         this.password = password;
         this.username = username;
+        this.role = role;
     }
-    public User(String username, String password, String phone, String email){
+    public User(String username, String password, String phone, String email, String role){
         this.username = username;
         this.password = password;
         this.phone = phone;
         this.email = email;
+        this.role = role;
     }
 
     public String getUsername() {
         return username;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public void setUsername(String username) {

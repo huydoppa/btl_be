@@ -43,7 +43,7 @@ public class AuthController {
         String phone = authRequest.getPhone();
         String email = authRequest.getEmail();
 
-        User user = new User(username, password,phone,email);
+        User user = new User(username, password,phone,email,"0");
 
         userRepository.save(user);
 
@@ -62,6 +62,7 @@ public class AuthController {
         String token = jwtTokenProvIder.generateToken((CustomUserDetails) authentication.getPrincipal());
 
         User user = userSevice.getUserByUsername(authRequest.getUsername());
+        System.out.println(user.getUsername());
         return new LoginResponse(token, user);
     }
 }

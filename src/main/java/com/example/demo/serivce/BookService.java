@@ -19,7 +19,7 @@ public class BookService {
 
 
     public BookResponse getBooks() {
-        List<Book> books = bookRepository.getAllBook();
+        List<Book> books = bookRepository.findAll();
         List<BookDTO> bookDTOS = new ArrayList<>();
         for (Book book : books) {
             BookDTO bookDTO = new BookDTO();
@@ -84,9 +84,13 @@ public class BookService {
         if (Objects.isNull(Book)) {
             response.setMsg("Khong tim thay san pham nay!");
         } else {
-            bookRepository.delete(Book);
+            bookRepository.deleteById(Long.parseLong(id));
         }
         return response;
+    }
+
+    public Boolean checkExistBook(String title){
+        return bookRepository.existsByTitle(title);
     }
 
 }

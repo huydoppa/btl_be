@@ -24,6 +24,7 @@ public class Book {
     @Column
     private String linkImg;
 
+
     public Book(){}
 
     public Book(Long Id, String title, String author, String category, String date, Long numberOfPage,String linkImg,String description) {
