@@ -12,18 +12,18 @@ public class Rating {
     private Long id;
     @Column(name="Rating")
     private Long Rating;
-    @Column(name="book_id")
-    private Long book_id;
+    @Column(name="bookId")
+    private Long bookId;
     @Column(name="username")
     private String username;
 
     public Rating() {
     }
 
-    public Rating(Long rating, Long book_id, String username) {
+    public Rating(Long rating, Long bookId, String username) {
         this.id = id;
         Rating = rating;
-        this.book_id = book_id;
+        this.bookId = bookId;
         this.username = username;
     }
 
@@ -43,12 +43,12 @@ public class Rating {
         Rating = rating;
     }
 
-    public Long getBook_id() {
-        return book_id;
+    public Long getBookId() {
+        return bookId;
     }
 
-    public void setBook_id(Long book_id) {
-        this.book_id = book_id;
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
     }
 
     public String getUsername() {

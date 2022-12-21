@@ -15,7 +15,7 @@ public class RatingController {
     @PostMapping("/create")
     public ApiResponse create(@RequestBody Rating ratingReq){
         try {
-            Rating rating = new Rating(ratingReq.getRating(), ratingReq.getBook_id(), ratingReq.getUsername());
+            Rating rating = new Rating(ratingReq.getRating(), ratingReq.getBookId(), ratingReq.getUsername());
             ratingRepository.save(rating);
             return new ApiResponse(0);
         }

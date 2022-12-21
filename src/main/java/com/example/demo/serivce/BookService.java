@@ -31,6 +31,7 @@ public class BookService {
             bookDTO.setNumberofPage(book.getNumberOfPage());
             bookDTO.setLinkImg(book.getLinkImg());
             bookDTO.setDescription(book.getDescription());
+            bookDTO.setPrice(book.getPrice());
             bookDTOS.add(bookDTO);
         }
         return new BookResponse(bookDTOS);
@@ -47,6 +48,7 @@ public class BookService {
             BookDTOs.setDescription(Book.getDescription());
             BookDTOs.setDate(Book.getDate());
             BookDTOs.setLinkImg(Book.getLinkImg());
+            BookDTOs.setPrice(Book.getPrice());
             BookDTOs.setNumberofPage(Book.getNumberOfPage());
         }
             return new BookResponse(BookDTOs);
@@ -61,6 +63,7 @@ public class BookService {
         Book.setCategory(BookDTO.getCategory());
         Book.setLinkImg(BookDTO.getLinkImg());
         Book.setNumberOfPage(BookDTO.getNumberofPage());
+        Book.setPrice(BookDTO.getPrice());
         bookRepository.save(Book);
         return new ApiResponse(0);
     }
@@ -74,6 +77,7 @@ public class BookService {
         Book.setCategory(BookDTO.getCategory());
         Book.setLinkImg(BookDTO.getLinkImg());
         Book.setNumberOfPage(BookDTO.getNumberofPage());
+        Book.setPrice(BookDTO.getPrice());
         bookRepository.save(Book);
         return new ApiResponse(0);
     }

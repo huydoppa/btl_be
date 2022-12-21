@@ -23,11 +23,13 @@ public class Book {
     private Long numberOfPage;
     @Column
     private String linkImg;
+    @Column
+    private Long price;
 
 
     public Book(){}
 
-    public Book(Long Id, String title, String author, String category, String date, Long numberOfPage,String linkImg,String description) {
+    public Book(Long Id, String title, String author, String category, String date, Long numberOfPage,String linkImg,String description,Long price) {
         this.Id = Id;
         this.title = title;
         this.author = author;
@@ -36,6 +38,7 @@ public class Book {
         this.numberOfPage = numberOfPage;
         this.linkImg = linkImg;
         this.description = description;
+        this.price = price;
     }
 
     public String getDescription() {
@@ -100,5 +103,13 @@ public class Book {
 
     public void setNumberOfPage(Long numberOfPage) {
         this.numberOfPage = numberOfPage;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
     }
 }

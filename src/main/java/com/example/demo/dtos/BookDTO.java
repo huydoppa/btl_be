@@ -11,6 +11,7 @@ public class BookDTO {
     private Long numberofPage;
     private String linkImg;
     private String description;
+    private Long price;
 
     private MultipartFile file;
 
@@ -84,5 +85,13 @@ public class BookDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
     }
 }
