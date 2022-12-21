@@ -47,6 +47,7 @@ public class BookController {
         bookDTO.setNumberofPage(bookdto.getNumberofPage());
         bookDTO.setLinkImg(linkImg);
         bookDTO.setCategory(bookdto.getCategory());
+        bookDTO.setPrice(bookdto.getPrice());
         return bookService.create(bookDTO);
     }
     @PostMapping("/update/{id}")
@@ -68,6 +69,7 @@ public class BookController {
         bookDTO.setNumberofPage(bookdto.getNumberofPage());
         bookDTO.setLinkImg(linkImg);
         bookDTO.setCategory(bookdto.getCategory());
+        bookDTO.setPrice(bookdto.getPrice());
         return bookService.update(bookDTO);
     }
 
