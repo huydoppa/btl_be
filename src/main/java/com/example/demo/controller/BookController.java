@@ -31,7 +31,7 @@ public class BookController {
     public ApiResponse createBook(@ModelAttribute BookDTO bookdto
     ){
         if(bookService.checkExistBook(bookdto.getTitle())||bookdto.getTitle().equals("")||bookdto.getAuthor().equals("")){
-            return new ApiResponse(1);
+            return new ApiResponse(1,"sach bi trung field");
         }
         String linkImg = "";
         MultipartFile file = bookdto.getFile();
@@ -52,9 +52,7 @@ public class BookController {
     }
     @PostMapping("/update/{id}")
     public ApiResponse updatebook(@PathVariable String id ,BookDTO bookdto ) {
-        if(bookService.checkExistBook(bookdto.getTitle())||bookdto.getTitle().equals("")||bookdto.getAuthor().equals("")){
-            return new ApiResponse(1);
-        }
+        System.out.println("updating ...");
         String linkImg = "";
         MultipartFile file = bookdto.getFile();
         if(file!=null){
