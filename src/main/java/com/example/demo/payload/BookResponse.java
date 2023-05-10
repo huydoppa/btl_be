@@ -4,6 +4,8 @@ import com.example.demo.dtos.BookDTO;
 
 import java.util.List;
 
+ghtk.vn token:3B008baea2008a0C90A29ABdfB89ae70E37553Ea
+
 public class BookResponse {
     public BookResponse(List<BookDTO> books) {
         this.books = books;
